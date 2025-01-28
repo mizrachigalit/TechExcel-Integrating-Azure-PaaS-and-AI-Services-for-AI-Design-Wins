@@ -16,10 +16,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.3" />
   </ItemGroup>
 
-  dotnet user-secrets init
-  dotnet user-secrets set "AzureOpenAI:DeploymentName" "gpt-4o"
-  dotnet user-secrets set "AzureOpenAI:Endpoint" "https://openai-hszmrzhiwxfei.openai.azure.com/"
-  dotnet user-secrets set "AzureOpenAI:ApiKey" "f5d8f388b210448d8b74525f4ab8f5e2"
-
-
 </Project>
