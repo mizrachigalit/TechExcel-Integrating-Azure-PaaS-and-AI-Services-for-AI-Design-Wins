@@ -8,6 +8,10 @@ using Microsoft.Data.SqlClient;
 using Azure.AI.OpenAI;
 using Azure;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.Connectors.OpenAI;
+using Microsoft.SemanticKernel.ChatCompletion;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,6 +49,8 @@ builder.Services.AddSingleton<CosmosClient>((_) =>
     return client;
 });
 
+
+
 // Create a single instance of the AzureOpenAIClient to be shared across the application.
 builder.Services.AddSingleton<AzureOpenAIClient>((_) =>
 {
@@ -56,6 +62,12 @@ builder.Services.AddSingleton<AzureOpenAIClient>((_) =>
 });
 
 var app = builder.Build();
+
+
+var config = new ConfigurationBuilder()
+    .AddUserSecrets<Program>()
+    .AddEnvironmentVariables()
+    .Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
